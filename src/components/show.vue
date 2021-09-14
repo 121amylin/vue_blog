@@ -1,8 +1,9 @@
 <template>
   <div class="list" v-if="list">
-    <h1>{{ showdata[0].title }}</h1>
-    <div v-html="showdata[0].authorHTML"></div>
+    <h1>{{ showdata.title }}</h1>
+    <div v-html="showdata.authorHTML"></div>
 
+    <!-- $route.params.id -->
   </div>
 </template>
 
@@ -22,11 +23,9 @@ export default {
   },
   computed: {
     showdata () {
-      return this.list.filter(item => {
-        return (item.id = this.$route.params.id)
-      })
+      const num = this.$route.params.id - 1
+      return this.list[num]
     }
-
   },
   methods: {
     add () {

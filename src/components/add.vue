@@ -7,10 +7,11 @@
     </div>
     <div class="row">
       <label for="content">文章內容：</label>
-      <textarea type="text" name="content" id="content" v-model="content" />
+      <vue-editor v-model="content" />
     </div>
 
     <button @click="add">新增文章</button>
+
   </div>
 </template>
 
@@ -18,7 +19,10 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import Vue2Editor from 'vue2-editor'
+
 Vue.use(VueAxios, axios)
+Vue.use(Vue2Editor)
 
 export default {
   name: 'add',
