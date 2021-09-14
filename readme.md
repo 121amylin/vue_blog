@@ -34,6 +34,8 @@ https://juejin.cn/post/7005107384611766285
 https://www.gushiciku.cn/pl/pH3W/zh-tw
 
 
+#### [Vue2Editor 富文本编辑器研究](https://zhuanlan.zhihu.com/p/100985112)
+
 
 
 
