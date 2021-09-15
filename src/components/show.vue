@@ -1,7 +1,12 @@
 <template>
-  <div class="list" v-if="list">
-    <h1>{{ showdata.title }}</h1>
-    <div v-html="showdata.authorHTML"></div>
+  <div class="show_page" v-if="list">
+    <div class="container">
+      <div class="row">
+        <div class="show radius_box">
+          <div class="edit_show" v-html="showdata.authorHTML"></div>
+        </div>
+      </div>
+    </div>
 
     <!-- $route.params.id -->
   </div>
@@ -46,3 +51,40 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import '../scss/common.scss';
+
+.show {
+  padding: 30px;
+  text-align: left;
+}
+.edit_show {
+  ul {
+    list-style-position: inside;
+  }
+  li{
+    padding: 4px 0;
+  }
+  a,
+  li,
+  p {
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  a {
+    color: $sec_light_color;
+    font-weight: 700;
+    transition: color 0.3s;
+    &:hover {
+      color: $sec_color;
+    }
+  }
+}
+.ql-syntax {
+  padding: 15px 20px;
+  background-color: $dark_g_color;
+  color: #fff;
+  border-radius: 6px;
+}
+</style>

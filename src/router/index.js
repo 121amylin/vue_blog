@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import list from '../components/list.vue'
+import article from '../components/article.vue'
 import add from '../components/add.vue'
 import show from '../components/show.vue'
 
@@ -9,8 +9,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'list',
-    component: list
+    name: 'article',
+    component: article
   },
   {
     path: '/add',
@@ -18,7 +18,7 @@ const routes = [
     component: add
   },
   {
-    path: '/show/:id',
+    path: '/article/show/:id',
     name: 'show',
     component: show
   }
