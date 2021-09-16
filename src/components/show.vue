@@ -14,10 +14,13 @@
           <p>建立時間：{{ showdata.date }}</p>
         </div>
       </div>
-      <button class="btn" @click="back">back</button>
+      <div class="row" v-show="is_reviesd">
+        <add></add>
+      </div>
+      <button class="btn" @click="back">返回上一頁</button>
+      <br /><br />
+      <button class="btn" @click="resive">修改文章</button>
     </div>
-
-    <!-- $route.params.id -->
   </div>
 </template>
 
@@ -25,6 +28,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import add from './add.vue'
 
 Vue.filter('arrStr', value => {
   return value.join('、')
@@ -33,10 +37,12 @@ Vue.use(VueAxios, axios)
 
 export default {
   name: 'show',
+  components: { add },
   data () {
     return {
       list: null,
-      text: ''
+      text: '',
+      is_reviesd: true
     }
   },
   computed: {
@@ -60,10 +66,7 @@ export default {
       this.$router.go(-1)
     },
     resive (id) {
-      this.findID(id)
-      this.now_chooseClass = this.list[this.now_ID].class
-      this.choose_radioArr = this.list[this.now_ID].tabClass
-      this.is_revise = true
+      this.is_show = false
     }
   },
   mounted () {

@@ -73,18 +73,23 @@ export default {
   },
   methods: {
     add () {
-      axios
-        .post('http://localhost:3000/posts', {
-          date: new Date().toLocaleString(),
-          title: this.title,
-          class: this.now_chooseClass,
-          tabClass: this.choose_radioArr,
-          authorHTML: this.content
-        })
-        .then(res => {
-          this.text = ''
-          this.content.push(res.data)
-        })
+      if (this.title && this.content) {
+        axios
+          .post('http://localhost:3000/posts', {
+            date: new Date().toLocaleString(),
+            title: this.title,
+            class: this.now_chooseClass,
+            tabClass: this.choose_radioArr,
+            authorHTML: this.content
+          })
+          .then(res => {
+            this.text = ''
+            this.list.push(res.data)
+          })
+        alert('新增文章完成')
+      } else {
+        alert('請填入標題或內容')
+      }
     }
   },
   mounted () {
