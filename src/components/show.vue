@@ -2,10 +2,19 @@
   <div class="show_page" v-if="list">
     <div class="container">
       <div class="row">
+        <h3 class="title">{{ showdata.title }}</h3>
+
         <div class="show radius_box">
           <div class="edit_show" v-html="showdata.authorHTML"></div>
         </div>
+        <br />
+        <div class="show radius_box">
+          <p>文章類別：{{ showdata.class }}</p>
+          <p>文章標籤：{{ showdata.tabClass | arrStr }}</p>
+          <p>建立時間：{{ showdata.date }}</p>
+        </div>
       </div>
+      <button class="btn" @click="back">back</button>
     </div>
 
     <!-- $route.params.id -->
@@ -16,6 +25,10 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+
+Vue.filter('arrStr', value => {
+  return value.join('、')
+})
 Vue.use(VueAxios, axios)
 
 export default {
@@ -42,6 +55,15 @@ export default {
           this.text = ''
           this.content.push(res.data)
         })
+    },
+    back () {
+      this.$router.go(-1)
+    },
+    resive (id) {
+      this.findID(id)
+      this.now_chooseClass = this.list[this.now_ID].class
+      this.choose_radioArr = this.list[this.now_ID].tabClass
+      this.is_revise = true
     }
   },
   mounted () {
@@ -60,10 +82,11 @@ export default {
   text-align: left;
 }
 .edit_show {
+  ol,
   ul {
     list-style-position: inside;
   }
-  li{
+  li {
     padding: 4px 0;
   }
   a,
